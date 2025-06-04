@@ -11,6 +11,7 @@ import {
   rem,
 } from "@mantine/core";
 import { IconSend } from "@tabler/icons-react";
+import { useScreen } from "../context/screen.context";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
@@ -18,7 +19,7 @@ const Chatbot = () => {
   ]);
   const [input, setInput] = useState("");
   const scrollRef = useRef(null);
-
+  const { height } = useScreen();
   const handleSend = () => {
     if (input.trim() === "") return;
 
@@ -40,18 +41,7 @@ const Chatbot = () => {
   }, [messages]);
 
   return (
-    <Container
-      size="l"
-      px="xs"
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        background: "#f3f4f6",
-        paddingTop: rem(10),
-      }}
-    >
-      {/* Scrollable Messages Area */}
+    <Flex direction={"column"} size="l" px="xs" h={height}>
       <ScrollArea
         ref={scrollRef}
         style={{ flex: 1 }}
@@ -86,17 +76,7 @@ const Chatbot = () => {
           ))}
         </Box>
       </ScrollArea>
-
-      {/* Fixed Input Area */}
-      <Box
-        style={{
-          position: "sticky",
-          bottom: 0,
-          background: "#f3f4f6",
-          padding: rem(10),
-          borderTop: "1px solid #dee2e6",
-        }}
-      >
+      <Box>
         <Flex gap="xs" align="center">
           <TextInput
             placeholder="Type your message..."
@@ -117,7 +97,7 @@ const Chatbot = () => {
           </Button>
         </Flex>
       </Box>
-    </Container>
+    </Flex>
   );
 };
 
