@@ -10,8 +10,8 @@ import {
   TextInput,
   rem,
 } from "@mantine/core";
-import { IconSend } from "@tabler/icons-react";
 import { useScreen } from "../context/screen.context";
+import { PaperAirplaneIcon } from "@primer/octicons-react";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
@@ -91,7 +91,7 @@ const Chatbot = () => {
             radius="xl"
             onClick={handleSend}
             size="md"
-            leftSection={<IconSend size={18} />}
+            leftSection={<PaperAirplaneIcon size={18} />}
           >
             Send
           </Button>

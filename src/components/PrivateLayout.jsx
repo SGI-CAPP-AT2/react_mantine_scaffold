@@ -12,9 +12,9 @@ import { ScreenProvider } from "../context/screen.context";
 import { useRef } from "react";
 import Branding from "./Branding";
 import { useProfile } from "../context/profile.context";
-import { IconChevronRight, IconMessage } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { CHAT_URL } from "../constants";
+import { ChevronRightIcon, SparklesFillIcon } from "@primer/octicons-react";
 
 const PrivateLayout = ({ children }) => {
   const [opened, { toggle }] = useDisclosure();
@@ -47,7 +47,7 @@ const PrivateLayout = ({ children }) => {
                       {profile.email}
                     </Text>
                   </div>
-                  <IconChevronRight />
+                  <ChevronRightIcon />
                 </Group>
               </Menu.Target>
               <Menu.Dropdown>
@@ -63,7 +63,7 @@ const PrivateLayout = ({ children }) => {
         <NavLink
           onClick={() => navigate(CHAT_URL)}
           label="Chat"
-          leftSection={<IconMessage size={16} stroke={1.5} />}
+          leftSection={<SparklesFillIcon size={16} stroke={1.5} />}
         />
       </AppShell.Navbar>
       <AppShell.Main ref={mainRef}>
